@@ -17,10 +17,13 @@ describe('FnQueue Abstract class', function () {
             var MyClass = (function (_super) {
                 __extends(MyClass, _super);
                 function MyClass() {
-                    var _this = _super !== null && _super.apply(this, arguments) || this;
+                    var _this = _super.call(this) || this;
                     _this.val = 10;
                     return _this;
                 }
+                MyClass.prototype.queueFlushed = function () {
+                    console.log('Queue flushed: ' + this.val);
+                };
                 MyClass.prototype.getVal = function () {
                     return this.val;
                 };
@@ -31,20 +34,21 @@ describe('FnQueue Abstract class', function () {
                         _this.fnQueue.next();
                     }, 10);
                 };
-                MyClass.prototype.increaseValXTimes = function (numberOftimes) {
+                MyClass.prototype.increaseValXTimes = function (numberOftimes, cb) {
                     for (var i = 0; i < numberOftimes; i++) {
-                        this.fnQueue.execute(this.increaseVal);
+                        this.fnQueue.push(this.increaseVal);
                     }
+                    this.fnQueue.once(src_1.FN_QUEUE_EVENTS.FLUSHED, cb);
+                    this.fnQueue.execute();
                 };
                 return MyClass;
             }(src_1.FnQueue));
             var myClass = new MyClass();
-            myClass.increaseValXTimes(10);
-            setTimeout(function () {
+            myClass.increaseValXTimes(10, function () {
                 var val = myClass.getVal();
                 expect(val).toEqual(20);
                 done();
-            }, 500);
+            });
         });
     });
 });

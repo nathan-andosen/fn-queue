@@ -1,4 +1,4 @@
-import { FnQueue } from '../../src';
+import { FnQueue, FN_QUEUE_EVENTS } from '../../src';
 
 
 describe('FnQueue Abstract class', () => {
@@ -11,6 +11,15 @@ describe('FnQueue Abstract class', () => {
       class MyClass extends FnQueue {
         private val = 10;
 
+        constructor() {
+          super();
+          // this.fnQueue.on(FN_QUEUE_EVENTS.FLUSHED, this.queueFlushed);
+        }
+
+        private queueFlushed() {
+          console.log('Queue flushed: ' + this.val);
+        }
+
         getVal() {
           return this.val;
         }
@@ -22,24 +31,29 @@ describe('FnQueue Abstract class', () => {
           }, 10);
         }
 
-        increaseValXTimes(numberOftimes: number) {
+        increaseValXTimes(numberOftimes: number, cb: () => void) {
           for(let i = 0; i < numberOftimes; i++) {
-            this.fnQueue.execute(this.increaseVal);
+            this.fnQueue.push(this.increaseVal);
           }
+          this.fnQueue.once(FN_QUEUE_EVENTS.FLUSHED, cb);
+          this.fnQueue.execute();
         }
       }
       let myClass = new MyClass();
-      myClass.increaseValXTimes(10);
-      setTimeout(() => {
+      // myClass.increaseValXTimes(10);
+      // setTimeout(() => {
+      //   let val = myClass.getVal();
+      //   expect(val).toEqual(20);
+      //   done();
+      // }, 500);
+      
+
+      myClass.increaseValXTimes(10, () => {
         let val = myClass.getVal();
         expect(val).toEqual(20);
         done();
-      }, 500);
-      // expect(myClass.execute()).toEqual(10);
-
-      // let fn = () => {};
-      // myClass.fnQueue.push(fn);
-      // 
+      });
+      
 
     });
   });
@@ -50,5 +64,5 @@ describe('FnQueue Abstract class', () => {
 
 
 describe('FnQueueService', () => {
-  
+
 });
