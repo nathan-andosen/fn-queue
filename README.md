@@ -8,6 +8,8 @@ An easy way to execute asynchronous javascript functions in a queue structure.
 
 ## Installation
 
+``npm install @thenja/fn-queue --save``
+
 ### Typescript
 
 ```javascript
