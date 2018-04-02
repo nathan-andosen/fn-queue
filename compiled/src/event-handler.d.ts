@@ -1,4 +1,4 @@
-export declare class EventEmitter {
+export declare class EventHandler {
     private events;
     private scope;
     constructor(scope?: any);

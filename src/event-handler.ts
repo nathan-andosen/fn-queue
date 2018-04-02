@@ -2,17 +2,17 @@
  * Class to emit events
  * 
  * @export
- * @class EventEmitter
+ * @class EventHandler
  */
-export class EventEmitter {
+export class EventHandler {
   private events: any;
   private scope: any;
 
-
+  
   /**
-   * Creates an instance of EventEmitter.
+   * Creates an instance of EventHandler.
    * @param {*} [scope] The scope "this" will apply to
-   * @memberof EventEmitter
+   * @memberof EventHandler
    */
   constructor(scope?: any) {
     this.events = {};
@@ -25,7 +25,7 @@ export class EventEmitter {
    * 
    * @private
    * @returns {string} 
-   * @memberof EventEmitter
+   * @memberof EventHandler
    */
   private generateId(): string {
     return (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
@@ -38,7 +38,7 @@ export class EventEmitter {
    * 
    * @param {string} eventName 
    * @param {*} data 
-   * @memberof EventEmitter
+   * @memberof EventHandler
    */
   emit(eventName: string, data?: any) {
     const events = this.events[eventName];
@@ -55,7 +55,7 @@ export class EventEmitter {
    * 
    * @param {string} eventName 
    * @param {Function} fn 
-   * @memberof EventEmitter
+   * @memberof EventHandler
    */
   subscribe(eventName: string, fn: Function) {
     if(!this.events[eventName]) {
@@ -71,7 +71,7 @@ export class EventEmitter {
    * 
    * @param {string} eventName 
    * @param {Function} fn 
-   * @memberof EventEmitter
+   * @memberof EventHandler
    */
   unsubscribe(eventName: string, fn: Function) {
     if(!fn['subscribeId']) { return; }

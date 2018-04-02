@@ -2,17 +2,16 @@ var webpack = require("webpack");
 var path = require('path');
 var version = require('./package.json').version;
 
-var banner = 'My App v' + version + '\n' +
+var banner = 'FnQueue v' + version + '\n' +
   '(c) ' + new Date().getFullYear() + ' Nathan Anderson';
 
 module.exports = {
   entry: {
-    "XApp" : "./src/index.ts"
+    "FnQueue" : "./src/index.ts"
   },
   output: {
     path: path.join(__dirname, "dist"),
-    filename: "my-class.min.js",
-    library : ["XApp"],
+    filename: "fn-queue.min.js",
     libraryTarget: 'umd'
   },
   resolve: {

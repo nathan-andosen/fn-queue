@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var EventEmitter = (function () {
-    function EventEmitter(scope) {
+var EventHandler = (function () {
+    function EventHandler(scope) {
         this.events = {};
         this.scope = (scope) ? scope : null;
     }
-    EventEmitter.prototype.generateId = function () {
+    EventHandler.prototype.generateId = function () {
         return (Date.now().toString(36) + Math.random().toString(36).substr(2, 5))
             .toUpperCase();
     };
-    EventEmitter.prototype.emit = function (eventName, data) {
+    EventHandler.prototype.emit = function (eventName, data) {
         var events = this.events[eventName];
         if (events) {
             for (var i = 0; i < events.length; i++) {
@@ -17,14 +17,14 @@ var EventEmitter = (function () {
             }
         }
     };
-    EventEmitter.prototype.subscribe = function (eventName, fn) {
+    EventHandler.prototype.subscribe = function (eventName, fn) {
         if (!this.events[eventName]) {
             this.events[eventName] = [];
         }
         fn['subscribeId'] = this.generateId();
         this.events[eventName].push(fn);
     };
-    EventEmitter.prototype.unsubscribe = function (eventName, fn) {
+    EventHandler.prototype.unsubscribe = function (eventName, fn) {
         if (!fn['subscribeId']) {
             return;
         }
@@ -37,7 +37,7 @@ var EventEmitter = (function () {
             }
         }
     };
-    return EventEmitter;
+    return EventHandler;
 }());
-exports.EventEmitter = EventEmitter;
-//# sourceMappingURL=event-emitter.js.map
+exports.EventHandler = EventHandler;
+//# sourceMappingURL=event-handler.js.map

@@ -3,8 +3,19 @@
   "description": "Simple queuing of async functions in javascript",
   "main": "compiled/src/index.js",
   "types": "compiled/src/index.d.ts",
+  "keywords": [
+    "queue",
+    "queuing"
+  ],
+  "bugs": "https://github.com/nathan-andosen/fn-queue/issues",
+  "homepage": "https://github.com/nathan-andosen/fn-queue",
   "version": "0.0.1",
-  "private": true,
+  "license": "MIT",
+  "author": "Nathan Anderson",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nathan-andosen/fn-queue"
+  },
   "dependencies": {},
   "devDependencies": {
     "@types/jasmine": "2.6.0",

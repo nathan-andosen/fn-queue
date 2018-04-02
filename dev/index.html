@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test dev</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../dist/fn-queue.min.js"></script>
+
+    <script type="text/javascript">
+      var fnQueue = new FnQueue();
+      var fnOne = function(cb) { console.log('Function one fired...'); cb(); }
+      var fnTwo = function() { console.log('Function two fired...'); fnQueue.next(); }
+      fnQueue.push(fnOne);
+      fnQueue.execute(fnTwo);
+    </script>
+  </head>
+  <body>
+    
+  </body>
+</html>
