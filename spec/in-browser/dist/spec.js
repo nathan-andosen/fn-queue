@@ -429,7 +429,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var event_handler_1 = __webpack_require__(0);
 exports.FN_QUEUE_EVENTS = {
     FLUSHED: 'flushed',
-    FUNCTION_TIMEOUT: 'functionTimeout'
+    FUNCTION_TIMEOUT: 'function-timeout'
 };
 var FnQueue = (function () {
     function FnQueue(scope, options) {

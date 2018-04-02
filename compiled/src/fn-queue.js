@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var event_handler_1 = require("./event-handler");
 exports.FN_QUEUE_EVENTS = {
     FLUSHED: 'flushed',
-    FUNCTION_TIMEOUT: 'functionTimeout'
+    FUNCTION_TIMEOUT: 'function-timeout'
 };
 var FnQueue = (function () {
     function FnQueue(scope, options) {

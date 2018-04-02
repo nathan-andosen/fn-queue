@@ -1,5 +1,5 @@
 {
-  "name": "fn-queue",
+  "name": "@thenja/fn-queue",
   "description": "Simple queuing of async functions in javascript",
   "main": "compiled/src/index.js",
   "types": "compiled/src/index.d.ts",
@@ -9,7 +9,7 @@
   ],
   "bugs": "https://github.com/nathan-andosen/fn-queue/issues",
   "homepage": "https://github.com/nathan-andosen/fn-queue",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "license": "MIT",
   "author": "Nathan Anderson",
   "repository": {
